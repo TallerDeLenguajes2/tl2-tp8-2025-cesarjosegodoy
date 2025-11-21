@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "D:\\08 - Tllar 2-semana01- 03\\2025\\06-\\tp8\\tp8.csproj": {}
+    "J:\\Desktop\\08 - Taller 2\\2025\\06 -\\tl2-tp8-2025-cesarjosegodoy\\tp8.csproj": {}
   },
   "projects": {
-    "D:\\08 - Tllar 2-semana01- 03\\2025\\06-\\tp8\\tp8.csproj": {
+    "J:\\Desktop\\08 - Taller 2\\2025\\06 -\\tl2-tp8-2025-cesarjosegodoy\\tp8.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\08 - Tllar 2-semana01- 03\\2025\\06-\\tp8\\tp8.csproj",
+        "projectUniqueName": "J:\\Desktop\\08 - Taller 2\\2025\\06 -\\tl2-tp8-2025-cesarjosegodoy\\tp8.csproj",
         "projectName": "tp8",
-        "projectPath": "D:\\08 - Tllar 2-semana01- 03\\2025\\06-\\tp8\\tp8.csproj",
-        "packagesPath": "C:\\Users\\Agluma\\.nuget\\packages\\",
-        "outputPath": "D:\\08 - Tllar 2-semana01- 03\\2025\\06-\\tp8\\obj\\",
+        "projectPath": "J:\\Desktop\\08 - Taller 2\\2025\\06 -\\tl2-tp8-2025-cesarjosegodoy\\tp8.csproj",
+        "packagesPath": "C:\\Users\\pepe_\\.nuget\\packages\\",
+        "outputPath": "J:\\Desktop\\08 - Taller 2\\2025\\06 -\\tl2-tp8-2025-cesarjosegodoy\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Agluma\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\pepe_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

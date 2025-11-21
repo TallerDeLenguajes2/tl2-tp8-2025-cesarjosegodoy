@@ -1,22 +1,22 @@
 {
     "workbench.colorCustomizations": {
-        "activityBar.activeBackground": "#3585b3",
-        "activityBar.background": "#246091",
-        "activityBar.foreground": "#15202b",
-        "activityBar.inactiveForeground": "#15202b99",
-        "activityBarBadge.background": "#945bc4",
-        "activityBarBadge.foreground": "#e7e7e7",
-        "commandCenter.border": "#15202b99",
-        "sash.hoverBorder": "#65c89b",
-        "statusBar.background": "#42b883",
-        "statusBar.foreground": "#15202b",
-        "statusBarItem.hoverBackground": "#359268",
-        "statusBarItem.remoteBackground": "#25628b",
-        "statusBarItem.remoteForeground": "#15202b",
-        "titleBar.activeBackground": "#4846c9",
-        "titleBar.activeForeground": "#15202b",
-        "titleBar.inactiveBackground": "#41d37100",
-        "titleBar.inactiveForeground": "#15202b99"
+        "activityBar.activeBackground": "#4a90a9", // Explorer
+        "activityBar.background": "#49aef1", // Barra izquieda
+        "activityBar.foreground": "#070d29", // Dibujo Explorer
+        "activityBar.inactiveForeground": "#08063d99", // Dibujos de la barra
+        "activityBarBadge.background": "#d16cbfd1", // Dibujos burbujas barra
+        "activityBarBadge.foreground": "#07a226", // NUmeros dentro de la burbujas
+        "commandCenter.border": "#92ab21cd",
+        "sash.hoverBorder": "#173e14",
+        "statusBar.background": "#c2ea9a", // Barra de Abajo
+        "statusBar.foreground": "#0f44ae", // Letra de Abajo
+        "statusBarItem.hoverBackground": "#8a978a", // barrra de abajo color resaltado
+        "statusBarItem.remoteBackground": "#686462", // open remote windows
+        "statusBarItem.remoteForeground": "#150112", // dibujo open remote windows
+        "titleBar.activeBackground": "#86a72c8e", // barra superior // amarillo TP N°8 - Pc
+        "titleBar.activeForeground": "#090957", // colores de las letras de la barra superior
+        "titleBar.inactiveBackground": "#b30fc6c1",
+        "titleBar.inactiveForeground": "#67e62cd1"
     },
-    "peacock.color": "#42b883"
+    "peacock.color": "#42b882"
 }
