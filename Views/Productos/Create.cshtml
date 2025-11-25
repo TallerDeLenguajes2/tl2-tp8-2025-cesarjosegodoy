@@ -1,0 +1,30 @@
+@model Productos.Producto
+
+@{
+    ViewData["Title"] = "Crear Producto";
+}
+
+<h2>Crear Nuevo Producto</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">   <!-- El Tag Helper asp-action="CrearProducto" asegura que, cuando se envíe el formulario (mediante el botón "submit") -->
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label">Descripción:</label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span> <!-- mensajes de error si existen, con estilo de texto rojo-->
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Precio" class="control-label">Precio:</label>
+                <input asp-for="Precio" class="form-control" type="number" />  <!--"number" solo permita la entrada de números -->
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Create" class="btn btn-success" /><!--btn btn-success (verde) -->
+                <a asp-action="Index" class="btn btn-secondary">Cancelar</a><!--btn btn-secondary (gris) -->
+            </div>
+        </form>
+    </div>
+</div>

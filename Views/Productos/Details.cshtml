@@ -1,0 +1,37 @@
+@model Productos.Producto
+
+
+@{
+    ViewData["Title"] = "Detalles del Producto";
+}
+
+<h2>Detalles del Producto</h2>
+
+ <!-- Uso de Tarjeta -->
+
+<div class="card">
+    <div class="card-header">
+        <h4>Información del Producto</h4>
+    </div>
+    <div class="card-body"> <!-- Se muestran tres propiedades del modelo -->
+        <dl class="row">
+            <dt class="col-sm-3">ID Producto:</dt>
+            <dd class="col-sm-9">@Model.IdProducto</dd> <!--01- ID Producto: Muestra arroba Model.IdProducto -->   
+
+            <dt class="col-sm-3">Descripción:</dt>
+            <dd class="col-sm-9">@Model.Descripcion</dd><!--02- Descripción: Muestra arrobaModel.Descripcion -->
+
+            <dt class="col-sm-3">Precio:</dt>
+            <dd class="col-sm-9">$@Model.Precio</dd><!--02- Precio: Muestra $ arrobaModel.Precio -->
+        </dl>
+    </div>
+</div>
+
+
+<!-- Botones de Acción -->
+
+<div class="mt-3">
+    <a asp-action="Edit" asp-route-id="@Model.IdProducto" class="btn btn-warning">Editar Producto</a> <!-- btn-warning (amarillo) -->
+    <a asp-action="Delete" asp-route-id="@Model.IdProducto" class="btn btn-danger">Eliminar Producto</a><!-- btn-danger (rojo) -->
+    <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a><!-- btn-secondary (gris) -->
+</div>

@@ -1,0 +1,30 @@
+@model Presupuestos.Presupuesto
+
+@{
+    ViewData["Title"] = "Crear Presupuesto";
+}
+
+<h2>Crear Nuevo Presupuesto</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label asp-for="NombreDestinatario" class="control-label">Nombre del Destinatario:</label>
+                <input asp-for="NombreDestinatario" class="form-control" />
+                <span asp-validation-for="NombreDestinatario" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="FechaCreacion" class="control-label">Fecha de Creación:</label>
+                <input asp-for="FechaCreacion" class="form-control" type="date" />
+                <span asp-validation-for="FechaCreacion" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mt-3">
+                <input type="submit" value="Crear Presupuesto" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>

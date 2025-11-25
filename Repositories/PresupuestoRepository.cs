@@ -1,4 +1,4 @@
-/*using System.Collections.Generic;
+using System.Collections.Generic;
 using Microsoft.Data.Sqlite;
 using Productos;
 using Presupuestos;
@@ -10,30 +10,6 @@ namespace RepositoriesP
     public class PresupuestoRepository
     {
         private readonly string _cadenaConexion = "Data Source=Db/Tienda.db;";
-
-        // Crear nuevo presupuesto
-        public int Crear(Presupuesto p)
-        {
-            try
-            {
-                using var conexion = new SqliteConnection(_cadenaConexion);
-                conexion.Open();
-
-                string sql = "INSERT INTO Presupuestos (nombreDestinatario, FechaCreacion) VALUES (@nombreDestinatario, @fecha); SELECT last_insert_rowid();";
-
-                using var cmd = new SqliteCommand(sql, conexion);
-                cmd.Parameters.AddWithValue("@nombreDestinatario", p.NombreDestinatario);
-                cmd.Parameters.AddWithValue("@fecha", DateTime.Now.ToString("yyyy-MM-dd"));
-
-                p.IdPresupuesto = Convert.ToInt32(cmd.ExecuteScalar());
-                return p.IdPresupuesto;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al crear presupuesto: {ex.Message}");
-                return 0;
-            }
-        }
 
         // Listar todos los presupuestos
         public List<Presupuesto> Listar()
@@ -64,6 +40,33 @@ namespace RepositoriesP
 
             return lista;
         }
+
+
+        // Crear nuevo presupuesto
+        public int Crear(Presupuesto p)
+        {
+            try
+            {
+                using var conexion = new SqliteConnection(_cadenaConexion);
+                conexion.Open();
+
+                string sql = "INSERT INTO Presupuestos (nombreDestinatario, FechaCreacion) VALUES (@nombreDestinatario, @fecha); SELECT last_insert_rowid();";
+
+                using var cmd = new SqliteCommand(sql, conexion);
+                cmd.Parameters.AddWithValue("@nombreDestinatario", p.NombreDestinatario);
+                cmd.Parameters.AddWithValue("@fecha", DateTime.Now.ToString("yyyy-MM-dd"));
+
+                p.IdPresupuesto = Convert.ToInt32(cmd.ExecuteScalar());
+                return p.IdPresupuesto;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al crear presupuesto: {ex.Message}");
+                return 0;
+            }
+        }
+
+
 
         // Obtener presupuesto por ID con su detalle
         public Presupuesto? ObtenerPorId(int id)
@@ -120,6 +123,26 @@ namespace RepositoriesP
             return p;
         }
 
+        public void Modificar(Presupuesto presupuesto)
+        {
+            string queryPresupuesto = "UPDATE Presupuestos SET NombreDestinatario = @nombre, FechaCreacion = @fecha WHERE idPresupuesto = @id";
+
+            using (var connection = new SqliteConnection(_cadenaConexion))
+            {
+                connection.Open();
+
+                var command = new SqliteCommand(queryPresupuesto, connection);
+                command.Parameters.AddWithValue("@nombre", presupuesto.NombreDestinatario);
+                command.Parameters.AddWithValue("@fecha", presupuesto.FechaCreacion.ToString("yyyy-MM-dd"));
+                command.Parameters.AddWithValue("@id", presupuesto.IdPresupuesto);
+                command.ExecuteNonQuery();
+
+                connection.Close();
+            }
+        }
+
+
+
         // Agregar producto al presupuesto
         public void AgregarProducto(int idPresupuesto, int idProducto, int cantidad)
         {
@@ -152,5 +175,10 @@ namespace RepositoriesP
 
             return cmdPres.ExecuteNonQuery() > 0;
         }
+
+
+
+
+
     }
-}*/
+}

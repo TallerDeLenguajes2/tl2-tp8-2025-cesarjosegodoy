@@ -1,6 +1,6 @@
 using Microsoft.Data.Sqlite;
 using Productos;
-using Presupuestos;
+
 
 namespace ProductoRepotitorys
 {
@@ -32,7 +32,6 @@ namespace ProductoRepotitorys
             }
 
             return nuevoId;
-
 
         }
         // - - - - 
@@ -85,7 +84,8 @@ namespace ProductoRepotitorys
 
         }
 
-        public bool Eliminar(int id)
+
+        /*public bool Eliminar(int id)
         {
             using var connection = new SqliteConnection(_connectionString);
             connection.Open();
@@ -95,21 +95,68 @@ namespace ProductoRepotitorys
             cmd.Parameters.AddWithValue("@id", id);
 
             return cmd.ExecuteNonQuery() > 0;
-        }
+        }*/
 
-        public bool Modificar(int id, Producto prod)
+
+        public void Eliminar(int _id)
         {
-            using var connection = new SqliteConnection(_connectionString);
-            connection.Open();
+            string query = "DELETE FROM Productos WHERE IDProducto = @id";
 
-            var query = "UPDATE Productos SET Descripcion=@d, Precio=@p WHERE idProducto=@id";
-            using var cmd = new SqliteCommand(query, connection);
-            cmd.Parameters.AddWithValue("@id", id);
-            cmd.Parameters.AddWithValue("@d", prod.Descripcion);
-            cmd.Parameters.AddWithValue("@p", prod.Precio);
+            using (var connection = new SqliteConnection(_connectionString))
+            {
+                connection.Open();
 
-            return cmd.ExecuteNonQuery() > 0;
+                var command = new SqliteCommand(query, connection);
+                command.Parameters.AddWithValue("@id", _id);
+                command.ExecuteNonQuery();
+
+                connection.Close();
+            }
         }
+
+
+
+        /* public bool Modificar(int id, Producto prod)
+         {
+             using var connection = new SqliteConnection(_connectionString);
+             connection.Open();
+
+             var query = "UPDATE Productos SET Descripcion=@d, Precio=@p WHERE idProducto=@id";
+             using var cmd = new SqliteCommand(query, connection);
+             cmd.Parameters.AddWithValue("@id", id);
+             cmd.Parameters.AddWithValue("@d", prod.Descripcion);
+             cmd.Parameters.AddWithValue("@p", prod.Precio);
+
+             return cmd.ExecuteNonQuery() > 0;
+         }*/
+
+        public void Modificar(int _id, string _nuevoNombre, int _nuevoPrecio)
+        {
+            string query = "UPDATE Productos SET Descripcion = @nuevaDes, Precio = @nuevoPrecio WHERE IDProducto = @id";
+
+            using (var connection = new SqliteConnection(_connectionString))
+            {
+                connection.Open();
+
+                var command = new SqliteCommand(query, connection);
+
+                command.Parameters.AddWithValue("@nuevaDes", _nuevoNombre);
+                command.Parameters.AddWithValue("@nuevoPrecio", _nuevoPrecio);
+                command.Parameters.AddWithValue("@id", _id);
+
+                command.ExecuteNonQuery();
+
+                connection.Close();
+            }
+        }
+
+
+
+
+
+
+
+
 
 
 

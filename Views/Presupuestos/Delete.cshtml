@@ -1,0 +1,36 @@
+@model Presupuestos.Presupuesto
+
+@{
+    ViewData["Title"] = "Eliminar Presupuesto";
+}
+
+<h2>Eliminar Presupuesto</h2>
+
+<div class="alert alert-warning" role="alert">
+    <h4>¿Está seguro que desea eliminar este presupuesto?</h4>
+    <p>Esta acción no se puede deshacer.</p>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5>Información del Presupuesto a Eliminar</h5>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">ID Presupuesto:</dt>
+            <dd class="col-sm-9">@Model.IdPresupuesto</dd>
+
+            <dt class="col-sm-3">Destinatario:</dt>
+            <dd class="col-sm-9">@Model.NombreDestinatario</dd>
+
+            <dt class="col-sm-3">Fecha de Creación:</dt>
+            <dd class="col-sm-9">@Model.FechaCreacion.ToString("dd/MM/yyyy")</dd>
+        </dl>
+    </div>
+</div>
+
+<form asp-action="Delete" class="mt-3">
+    <input type="hidden" asp-for="IdPresupuesto" />
+    <input type="submit" value="Eliminar Permanentemente" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

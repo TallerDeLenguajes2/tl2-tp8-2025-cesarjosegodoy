@@ -1,27 +1,51 @@
-﻿@model List< Productos.Producto>;
+﻿@model List< Productos.Producto>;//modelo de datos que esta vista espera recibir es una lista de objeto
 
 @{
-    ViewData["Title"] = "Listado de Productos";
+    ViewData["Title"] = "Listado de Productos"; // título - aparece en la barra de título del navegador
 }
 
 <h2>Listado de Productos</h2>
 
-<table class="table">
-    <thead>
-         <tr>
-           <th>Descripcion del Producto</th>
-           <th>Precio Unitario</th>
-         </tr>
-    </thead>
-    <tbody>
-        @foreach (var producto  in Model)
-     {
+<!--Boton para crear productos-->
+<section class="my-4">
+    <a asp-action="Create" class="btn btn-primary">Crear Producto</a> <!--al hacer clic en botón, navegará a la acción Create-->
+</section>
+
+<!--Tabla de Productos-->
+<table class="table table-striped table-bordered"> <!-- tabla con estilos Bootstrap -->
+
+    <thead class="thead-dark"> <!-- Encabezados / columnas de la tabla -->
         <tr>
-            <td>@producto.Descripcion</td>
-            <td>@producto.Precio</td>
-            <td>    </td>
+            <th>ID Producto</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Acciones</th>
         </tr>
-     }
-    
+    </thead>
+    <tbody> <!-- Cuerpo de la tabla -->
+        @foreach (var producto in Model) // Itera sobre cada producto  en la lista
+        {
+            <tr>    <!-- crea una fila (<tr>) -->
+                <td>@producto.IdProducto</td> <!-- muestra sus propiedades -->
+                <td>@producto.Descripcion</td>
+                <td>$@producto.Precio</td>
+                <td>
+
+                    <a asp-action="Details" asp-route-id="@producto.IdProducto" 
+                        class="btn btn-info btn-sm">Detalles</a>       <!--  acción Details pasando el IdProducto -->          
+
+                    <a asp-action="Edit" asp-route-id="@producto.IdProducto"
+                        class="btn btn-success btn-sm">Editar</a>
+
+                    <a asp-action="Delete" asp-route-id="@producto.IdProducto"
+                        class="btn btn-danger btn-sm">Eliminar</a>
+
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<!-- Botón "Volver al Inicio" -->
+<div>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Volver al Inicio</a>
+</div>

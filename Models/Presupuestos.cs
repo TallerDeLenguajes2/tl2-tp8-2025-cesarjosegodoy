@@ -38,11 +38,11 @@ namespace Presupuestos
             return Detalle.Sum(d => d.Cantidad);
         }
 
-        public Presupuesto(string nombreDestinatario)
+        /*public Presupuesto(string nombreDestinatario)
         {
             NombreDestinatario = nombreDestinatario;
             FechaCreacion = DateOnly.FromDateTime(DateTime.Now);
-        }
+        }*/
 
 
 
