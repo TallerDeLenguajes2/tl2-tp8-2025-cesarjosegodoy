@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "J:\\Desktop\\08 - Taller 2\\2025\\06 -\\tl2-tp8-2025-cesarjosegodoy\\tp8.csproj": {}
+    "J:\\Desktop\\08 - Taller 2\\2025\\07-\\tl2-tp8-2025-cesarjosegodoy\\tp8.csproj": {}
   },
   "projects": {
-    "J:\\Desktop\\08 - Taller 2\\2025\\06 -\\tl2-tp8-2025-cesarjosegodoy\\tp8.csproj": {
+    "J:\\Desktop\\08 - Taller 2\\2025\\07-\\tl2-tp8-2025-cesarjosegodoy\\tp8.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "J:\\Desktop\\08 - Taller 2\\2025\\06 -\\tl2-tp8-2025-cesarjosegodoy\\tp8.csproj",
+        "projectUniqueName": "J:\\Desktop\\08 - Taller 2\\2025\\07-\\tl2-tp8-2025-cesarjosegodoy\\tp8.csproj",
         "projectName": "tp8",
-        "projectPath": "J:\\Desktop\\08 - Taller 2\\2025\\06 -\\tl2-tp8-2025-cesarjosegodoy\\tp8.csproj",
+        "projectPath": "J:\\Desktop\\08 - Taller 2\\2025\\07-\\tl2-tp8-2025-cesarjosegodoy\\tp8.csproj",
         "packagesPath": "C:\\Users\\pepe_\\.nuget\\packages\\",
-        "outputPath": "J:\\Desktop\\08 - Taller 2\\2025\\06 -\\tl2-tp8-2025-cesarjosegodoy\\obj\\",
+        "outputPath": "J:\\Desktop\\08 - Taller 2\\2025\\07-\\tl2-tp8-2025-cesarjosegodoy\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

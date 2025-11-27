@@ -1,18 +1,16 @@
 using System.Collections.Generic;
 using Microsoft.Data.Sqlite;
-using Productos;
-using Presupuestos;
-using PresupuestoDetalles;
+using SistemaVentas.Web.Models;
 using System;
 
-namespace RepositoriesP
+namespace SistemaVentas.Web.Repository
 {
     public class PresupuestoRepository
     {
         private readonly string _cadenaConexion = "Data Source=Db/Tienda.db;";
 
         // Listar todos los presupuestos
-        public List<Presupuesto> Listar()
+        public List<Presupuesto> GetAllPresupuesto()
         {
             var lista = new List<Presupuesto>();
 
@@ -31,8 +29,8 @@ namespace RepositoriesP
                     IdPresupuesto = reader.GetInt32(0),
                     NombreDestinatario = reader.GetString(1),
                     FechaCreacion = DateOnly.TryParse(reader.GetString(2), out var fecha)
-                        ? fecha
-                        : DateOnly.FromDateTime(DateTime.Now),
+                    ? fecha.ToDateTime(TimeOnly.MinValue) // convierte a DateTime
+                    : DateTime.Now,
                     Detalle = new List<PresupuestoDetalle>()
                 };
                 lista.Add(p);
@@ -50,13 +48,18 @@ namespace RepositoriesP
                 using var conexion = new SqliteConnection(_cadenaConexion);
                 conexion.Open();
 
-                string sql = "INSERT INTO Presupuestos (nombreDestinatario, FechaCreacion) VALUES (@nombreDestinatario, @fecha); SELECT last_insert_rowid();";
+                string sqlInsert = @"INSERT INTO Presupuestos 
+                             (nombreDestinatario, FechaCreacion) 
+                             VALUES (@nombre, @fecha);";
 
-                using var cmd = new SqliteCommand(sql, conexion);
-                cmd.Parameters.AddWithValue("@nombreDestinatario", p.NombreDestinatario);
+                using var cmd = new SqliteCommand(sqlInsert, conexion);
+                cmd.Parameters.AddWithValue("@nombre", p.NombreDestinatario);
                 cmd.Parameters.AddWithValue("@fecha", DateTime.Now.ToString("yyyy-MM-dd"));
+                cmd.ExecuteNonQuery();
 
+                cmd.CommandText = "SELECT last_insert_rowid();";
                 p.IdPresupuesto = Convert.ToInt32(cmd.ExecuteScalar());
+
                 return p.IdPresupuesto;
             }
             catch (Exception ex)
@@ -69,7 +72,7 @@ namespace RepositoriesP
 
 
         // Obtener presupuesto por ID con su detalle
-        public Presupuesto? ObtenerPorId(int id)
+        public Presupuesto? GetByIdPresupuesto(int id)
         {
             Presupuesto? p = null;
 
@@ -87,7 +90,9 @@ namespace RepositoriesP
                 {
                     IdPresupuesto = reader.GetInt32(0),
                     NombreDestinatario = reader.GetString(1),
-                    FechaCreacion = DateOnly.Parse(reader.GetString(2)),
+                    FechaCreacion = DateOnly.TryParse(reader.GetString(2), out var fecha)  // otra forma general es : FechaCreacion = DateTime.Parse(reader.GetString(2));
+                    ? fecha.ToDateTime(TimeOnly.MinValue) // convierte a DateTime
+                    : DateTime.Now,
                     Detalle = new List<PresupuestoDetalle>()
                 };
             }
@@ -110,7 +115,7 @@ namespace RepositoriesP
                 {
                     IdProducto = readerDet.GetInt32(0),
                     Descripcion = readerDet.GetString(1),
-                    Precio = readerDet.GetInt32(2)
+                    Precio = readerDet.GetDecimal(2)
                 };
 
                 p.Detalle.Add(new PresupuestoDetalle

@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
+using SistemaVentas.Web.Models;
 
-namespace Productos
+namespace SistemaVentas.Web.Models
 {
 
 
@@ -10,10 +11,10 @@ namespace Productos
         public int IdProducto { get; set; }
 
         [JsonPropertyName("descripcion")]
-        public string Descripcion { get; set; }
+        public string? Descripcion { get; set; }
 
         [JsonPropertyName("precio")]
-        public int Precio { get; set; }
+        public decimal Precio { get; set; }
 
         public Producto(){}
 

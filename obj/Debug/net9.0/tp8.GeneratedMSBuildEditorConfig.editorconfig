@@ -9,81 +9,81 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = tp8
 build_property.RootNamespace = tp8
-build_property.ProjectDir = J:\Desktop\08 - Taller 2\2025\06 -\tl2-tp8-2025-cesarjosegodoy\
+build_property.ProjectDir = J:\Desktop\08 - Taller 2\2025\07-\tl2-tp8-2025-cesarjosegodoy\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = J:\Desktop\08 - Taller 2\2025\06 -\tl2-tp8-2025-cesarjosegodoy
+build_property.MSBuildProjectDirectory = J:\Desktop\08 - Taller 2\2025\07-\tl2-tp8-2025-cesarjosegodoy
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[J:/Desktop/08 - Taller 2/2025/06 -/tl2-tp8-2025-cesarjosegodoy/Views/Home/Index.cshtml]
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[J:/Desktop/08 - Taller 2/2025/06 -/tl2-tp8-2025-cesarjosegodoy/Views/Home/Privacy.cshtml]
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[J:/Desktop/08 - Taller 2/2025/06 -/tl2-tp8-2025-cesarjosegodoy/Views/Presupuestos/Create.cshtml]
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Presupuestos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3VwdWVzdG9zXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[J:/Desktop/08 - Taller 2/2025/06 -/tl2-tp8-2025-cesarjosegodoy/Views/Presupuestos/Delete.cshtml]
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Presupuestos/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3VwdWVzdG9zXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[J:/Desktop/08 - Taller 2/2025/06 -/tl2-tp8-2025-cesarjosegodoy/Views/Presupuestos/Details.cshtml]
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Presupuestos/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3VwdWVzdG9zXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[J:/Desktop/08 - Taller 2/2025/06 -/tl2-tp8-2025-cesarjosegodoy/Views/Presupuestos/Edit.cshtml]
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Presupuestos/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3VwdWVzdG9zXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[J:/Desktop/08 - Taller 2/2025/06 -/tl2-tp8-2025-cesarjosegodoy/Views/Presupuestos/Index.cshtml]
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Presupuestos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3VwdWVzdG9zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[J:/Desktop/08 - Taller 2/2025/06 -/tl2-tp8-2025-cesarjosegodoy/Views/Productos/Create.cshtml]
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Productos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9zXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[J:/Desktop/08 - Taller 2/2025/06 -/tl2-tp8-2025-cesarjosegodoy/Views/Productos/Delete.cshtml]
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Productos/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9zXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[J:/Desktop/08 - Taller 2/2025/06 -/tl2-tp8-2025-cesarjosegodoy/Views/Productos/Details.cshtml]
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Productos/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9zXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[J:/Desktop/08 - Taller 2/2025/06 -/tl2-tp8-2025-cesarjosegodoy/Views/Productos/Edit.cshtml]
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Productos/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9zXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[J:/Desktop/08 - Taller 2/2025/06 -/tl2-tp8-2025-cesarjosegodoy/Views/Productos/Index.cshtml]
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Productos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[J:/Desktop/08 - Taller 2/2025/06 -/tl2-tp8-2025-cesarjosegodoy/Views/Shared/Error.cshtml]
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[J:/Desktop/08 - Taller 2/2025/06 -/tl2-tp8-2025-cesarjosegodoy/Views/Shared/_ValidationScriptsPartial.cshtml]
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[J:/Desktop/08 - Taller 2/2025/06 -/tl2-tp8-2025-cesarjosegodoy/Views/_ViewImports.cshtml]
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[J:/Desktop/08 - Taller 2/2025/06 -/tl2-tp8-2025-cesarjosegodoy/Views/_ViewStart.cshtml]
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[J:/Desktop/08 - Taller 2/2025/06 -/tl2-tp8-2025-cesarjosegodoy/Views/Shared/_Layout.cshtml]
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-20yh20wnxz

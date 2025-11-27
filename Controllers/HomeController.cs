@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using tp8.Models;
+using SistemaVentas.Web.Repository;
 
 namespace tp8.Controllers;
 

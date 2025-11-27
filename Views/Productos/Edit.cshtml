@@ -1,4 +1,4 @@
-@model Productos.Producto
+@model SistemaVentas.Web.ViewModels.ProductoViewModel
 
 
 @{
@@ -11,23 +11,29 @@
     <div class="col-md-6">
         <form asp-action="Edit">
             <input type="hidden" asp-for="IdProducto" />
-            
+
             <div class="form-group">
                 <label asp-for="Descripcion" class="control-label">Descripción:</label>
                 <input asp-for="Descripcion" class="form-control" />
+                <!-- Mensajes de validación -->
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
                 <label asp-for="Precio" class="control-label">Precio:</label>
                 <input asp-for="Precio" class="form-control" type="number" />
+                <!-- Mensajes de validación -->
                 <span asp-validation-for="Precio" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group mt-3">
                 <input type="submit" value="Guardar Cambios" class="btn btn-primary" />
                 <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
+        @section Scripts {
+            <partial name="_ValidationScriptsPartial" />
+        }
+
     </div>
 </div>

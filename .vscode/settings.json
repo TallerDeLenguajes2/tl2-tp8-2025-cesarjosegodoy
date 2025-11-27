@@ -13,9 +13,9 @@
         "statusBarItem.hoverBackground": "#8a978a", // barrra de abajo color resaltado
         "statusBarItem.remoteBackground": "#686462", // open remote windows
         "statusBarItem.remoteForeground": "#150112", // dibujo open remote windows
-        "titleBar.activeBackground": "#86a72c8e", // barra superior // amarillo TP N°8 - Pc
+        "titleBar.activeBackground": "#2ca7638e", // barra superior // verde TP N°9 - Pc
         "titleBar.activeForeground": "#090957", // colores de las letras de la barra superior
-        "titleBar.inactiveBackground": "#b30fc6c1",
+        "titleBar.inactiveBackground": "#0f74c6c1",
         "titleBar.inactiveForeground": "#67e62cd1"
     },
     "peacock.color": "#42b882"

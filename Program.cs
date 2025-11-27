@@ -1,7 +1,13 @@
+using SistemaVentas.Web.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// ✔ REGISTRO REQUERIDO PARA INYECCIÓN DE DEPENDENCIAS
+builder.Services.AddScoped<PresupuestoRepository>(); // tengo que agregar esto - NO estás registrando los repositorios en el contenedor de DI
+builder.Services.AddScoped<ProductoRepository>();
 
 var app = builder.Build();
 

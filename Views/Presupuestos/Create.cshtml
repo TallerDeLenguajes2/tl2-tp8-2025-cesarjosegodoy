@@ -1,4 +1,4 @@
-@model Presupuestos.Presupuesto
+@model SistemaVentas.Web.ViewModels.PresupuestoViewModel;
 
 @{
     ViewData["Title"] = "Crear Presupuesto";
@@ -26,5 +26,8 @@
                 <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
+         @section Scripts {
+            <partial name="_ValidationScriptsPartial" />
+        }
     </div>
 </div>

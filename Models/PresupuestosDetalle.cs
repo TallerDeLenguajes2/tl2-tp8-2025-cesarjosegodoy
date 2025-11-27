@@ -1,21 +1,16 @@
-using System.Text.Json.Serialization;
-using Productos;
+using SistemaVentas.Web.Models;
 
-namespace PresupuestoDetalles
+namespace SistemaVentas.Web.Models
 {
     public class PresupuestoDetalle
     {
-        [JsonPropertyName("producto")]
-        public Producto? Producto { get; set; }
-
-        [JsonPropertyName("cantidad")]
+        public int IdDetalle { get; set; }
+        public int IdPresupuesto { get; set; }
+        public int IdProducto { get; set; }
         public int Cantidad { get; set; }
+        public decimal PrecioUnitario { get; set; }
+        public Producto? Producto { get; set; }
+        public decimal Subtotal => Cantidad * PrecioUnitario;
 
-        /*
-        public PresupuestoDetalle(Producto _producto, int _cantidad)
-        {
-            Producto = _producto;
-            Cantidad = _cantidad;
-        }*/
     }
 }

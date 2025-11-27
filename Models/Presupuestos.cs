@@ -1,8 +1,7 @@
 using System.Text.Json.Serialization;
-using PresupuestoDetalles;
-using Productos;
+using SistemaVentas.Web.Models;
 
-namespace Presupuestos
+namespace SistemaVentas.Web.Models
 {
 
 
@@ -12,10 +11,10 @@ namespace Presupuestos
         public int IdPresupuesto { get; set; }
 
         [JsonPropertyName("nombreDestinatario")]
-        public string NombreDestinatario { get; set; }
+        public string? NombreDestinatario { get; set; }
 
         [JsonPropertyName("fechaCreacion")]
-        public DateOnly FechaCreacion { get; set; }
+        public DateTime FechaCreacion { get; set; } // antes DateOnly
 
         [JsonPropertyName("detalle")]
         public List<PresupuestoDetalle> Detalle { get; set; } = new();

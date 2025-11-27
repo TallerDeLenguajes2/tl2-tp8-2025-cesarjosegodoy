@@ -1,8 +1,8 @@
 using Microsoft.Data.Sqlite;
-using Productos;
+using SistemaVentas.Web.Models;
 
 
-namespace ProductoRepotitorys
+namespace SistemaVentas.Web.Repository
 {
 
 
@@ -14,6 +14,12 @@ namespace ProductoRepotitorys
         public int Alta(Producto producto)
         {
 
+            if (string.IsNullOrWhiteSpace(producto.Descripcion))
+                throw new InvalidOperationException("La descripción no puede ser null o vacía.");
+
+            if (producto.Precio <= 0)
+                throw new InvalidOperationException("El precio debe ser mayor a cero.");
+                
             int nuevoId = 0;
 
             using (var connection = new SqliteConnection(_connectionString))
@@ -51,7 +57,7 @@ namespace ProductoRepotitorys
                 {
                     IdProducto = reader.GetInt32(0),
                     Descripcion = reader.GetString(1),
-                    Precio = reader.GetInt32(2)
+                    Precio = reader.GetDecimal(2)
                 });
             }
 
@@ -77,7 +83,7 @@ namespace ProductoRepotitorys
                 {
                     IdProducto = reader.GetInt32(0),
                     Descripcion = reader.GetString(1),
-                    Precio = reader.GetInt32(2)
+                    Precio = reader.GetDecimal(2)
                 };
             }
             return null;
@@ -130,7 +136,7 @@ namespace ProductoRepotitorys
              return cmd.ExecuteNonQuery() > 0;
          }*/
 
-        public void Modificar(int _id, string _nuevoNombre, int _nuevoPrecio)
+        public void Modificar(Producto nuevo)
         {
             string query = "UPDATE Productos SET Descripcion = @nuevaDes, Precio = @nuevoPrecio WHERE IDProducto = @id";
 
@@ -140,9 +146,9 @@ namespace ProductoRepotitorys
 
                 var command = new SqliteCommand(query, connection);
 
-                command.Parameters.AddWithValue("@nuevaDes", _nuevoNombre);
-                command.Parameters.AddWithValue("@nuevoPrecio", _nuevoPrecio);
-                command.Parameters.AddWithValue("@id", _id);
+                command.Parameters.AddWithValue("@nuevaDes", nuevo.Descripcion);
+                command.Parameters.AddWithValue("@nuevoPrecio", nuevo.Precio);
+                command.Parameters.AddWithValue("@id", nuevo.IdProducto);
 
                 command.ExecuteNonQuery();
 
