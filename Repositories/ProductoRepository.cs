@@ -8,10 +8,19 @@ namespace SistemaVentas.Web.Repository
 
     public class ProductoRepository
     {
+        // Cadena de conexión estática o leída de un archivo de configuración (appsettings.json)
+        // Para este ejemplo, la definimos directamente:
         private string _connectionString = "Data Source=Db/Tienda.db;"; // base de datos
 
+        // Constructor Síncrono (sin parámetros, necesario para la instanciación directa en el Controller)
+        public ProductoRepository()
+        {
+        }
+
+
+
         // - - - - - Alta
-        public int Alta(Producto producto)
+        public int Add(Producto producto)
         {
 
             if (string.IsNullOrWhiteSpace(producto.Descripcion))
@@ -19,7 +28,7 @@ namespace SistemaVentas.Web.Repository
 
             if (producto.Precio <= 0)
                 throw new InvalidOperationException("El precio debe ser mayor a cero.");
-                
+
             int nuevoId = 0;
 
             using (var connection = new SqliteConnection(_connectionString))
@@ -30,8 +39,10 @@ namespace SistemaVentas.Web.Repository
 
                 using (var command = new SqliteCommand(sql, connection))
                 {
+                    // Uso de parámetros para prevenir la inyección SQL (práctica esencial de seguridad)
                     command.Parameters.AddWithValue("@desc", producto.Descripcion);
                     command.Parameters.AddWithValue("@prec", producto.Precio);
+                    // ExecuteNonQuery se usa para comandos que no devuelven filas (INSERT, UPDATE, DELETE)
                     nuevoId = Convert.ToInt32(command.ExecuteScalar());
                 }
 
@@ -49,6 +60,7 @@ namespace SistemaVentas.Web.Repository
 
             const string query = "SELECT idProducto, Descripcion, Precio FROM Productos";
             using var command = new SqliteCommand(query, connection);
+            // ExecuteReader se usa para consultas que devuelven filas (SELECT)
             using var reader = command.ExecuteReader();
 
             while (reader.Read())

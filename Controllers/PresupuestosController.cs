@@ -47,7 +47,8 @@ namespace SistemaVentas.Web.Controllers
             {
                 IdPresupuesto = presupuesto.IdPresupuesto,
                 NombreDestinatario = presupuesto.NombreDestinatario,
-                FechaCreacion = presupuesto.FechaCreacion
+                FechaCreacion = presupuesto.FechaCreacion,
+                Detalle = presupuesto.Detalle, 
             };
 
 
@@ -150,7 +151,7 @@ namespace SistemaVentas.Web.Controllers
                 NombreDestinatario = presupuesto.NombreDestinatario,
                 FechaCreacion = presupuesto.FechaCreacion
             };
-    
+
 
             return View(presupuestoVm);
         }
@@ -169,64 +170,51 @@ namespace SistemaVentas.Web.Controllers
         [HttpGet]
         public IActionResult AgregarProducto(int id)
         {
+            // 1. Obtener los productos para el SelectList
             List<Producto> productos = _productoRepository.GetAll();
 
+            // 2. Crear el ViewModel
             AgregarProductoViewModel model = new AgregarProductoViewModel
             {
-                IdPresupuesto = id,
-                ListaProductos = new SelectList(productos, "IdProducto", "Descripcion")
+                IdPresupuesto = id,// Pasamos el ID del presupuesto actual
+                ListaProductos = new SelectList(productos, "IdProducto", "Descripcion")// 3. Crear el SelectList
 
             };
 
             return View(model);
         }
 
+        // ❗ El Método CLAVE para la validación de la cantidad
+        // POST: Presupuestos/AgregarProducto
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult AgregarProducto(AgregarProductoViewModel model)
         {
+            // 1. Chequeo de Seguridad para la Cantidad
             if (!ModelState.IsValid)
             {
                 // RE-CARGAR DROPDOWN EN UN POST INVALIDO
+                // LÓGICA CRÍTICA DE RECARGA: Si falla la validación,
+                // debemos recargar el SelectList porque se pierde en el POST.
                 var productos = _productoRepository.GetAll();
-                model.ListaProductos = new SelectList(productos, "IdProducto", "Descripcion");
 
+                model.ListaProductos = new SelectList(productos, "IdProducto", "Descripcion");
+                // Devolvemos el modelo con los errores y el dropdown recargado
                 return View(model);
             }
 
             // Guardar en la BD
+            // 2. Si es VÁLIDO: Llamamos al repositorio para guardar la relación
             _presupuestoRepository.AgregarProducto(
                 model.IdPresupuesto,
                 model.IdProducto,
                 model.Cantidad
             );
-
+            // 3. Redirigimos al detalle del presupuesto
             return RedirectToAction(nameof(Details), new { id = model.IdPresupuesto });
         }
 
 
-
-        /*public IActionResult AgregarProducto(AgregarProductoViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                // LÓGICA CRÍTICA DE RECARGA: Si falla la validación,
-                // debemos recargar el SelectList porque se pierde en el POST.
-
-                Console.WriteLine("ModelState inválido");
-                foreach (var error in ModelState)
-                {
-                    Console.WriteLine($"{error.Key}: {string.Join(", ", error.Value.Errors.Select(e => e.ErrorMessage))}");
-                }
-                List<Producto> productos = _productoRepository.GetAll();
-                model.ListaProductos = new SelectList(productos, "IdProducto", "Descripcion");
-                return View(model);
-            }
-
-            // 2. Si es VÁLIDO: Llamamos al repositorio para guardar la relación
-            _presupuestoRepository.AgregarProducto(model.IdPresupuesto, model.IdProducto, model.Cantidad);
-            return RedirectToAction(nameof(Details), new { id = model.IdPresupuesto }); //Presupuesto/Details/5
-        }*/
 
 
 

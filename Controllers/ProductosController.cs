@@ -70,7 +70,7 @@ namespace SistemaVentas.Web.Controllers
                 Precio = productoVm.Precio
             };
             // 3. Llamada al Repositorio
-            _productoRepository.Alta(nuevoProducto);
+            _productoRepository.Add(nuevoProducto);
             return RedirectToAction(nameof(Index));
 
 

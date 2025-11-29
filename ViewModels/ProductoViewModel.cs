@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-
+using SistemaVentas.Web.Models;
 //Este VM manejará la creación y edición de productos
 
 
@@ -20,5 +20,19 @@ namespace SistemaVentas.Web.ViewModels
         [Range(0.01, double.MaxValue, ErrorMessage = "El precio debe ser un valor positivo.")]
 
         public decimal Precio { get; set; }
+
+        public ProductoViewModel()
+        {
+
+        }
+
+        public ProductoViewModel(Producto producto)
+        {
+            Descripcion = producto.Descripcion;
+            IdProducto = producto.IdProducto;
+            Precio = producto.Precio;
+        }
+
+
     }
 }

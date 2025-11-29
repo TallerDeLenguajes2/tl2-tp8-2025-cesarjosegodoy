@@ -1,29 +1,40 @@
-
-
 @model SistemaVentas.Web.ViewModels.PresupuestoViewModel
 
 @{
     ViewData["Title"] = "Detalles del Presupuesto";
 }
 
-<h2>Detalles del Presupuesto</h2>
-
+<h2 class="mt-4">Detalles del Presupuesto Nro. @Html.DisplayFor(model => model.IdPresupuesto)</h2>
+<hr />
 <div class="card">
     <div class="card-header">
         <h4>Información del Presupuesto</h4>
     </div>
     <div class="card-body">
         <dl class="row">
-            <dt class="col-sm-3">ID Presupuesto:</dt>
-            <dd class="col-sm-9">@Model.IdPresupuesto</dd>
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.NombreDestinatario)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.NombreDestinatario)</dd>
 
-            <dt class="col-sm-3">Destinatario:</dt>
-            <dd class="col-sm-9">@Model.NombreDestinatario</dd>
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.FechaCreacion)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.FechaCreacion)</dd>
 
-            <dt class="col-sm-3">Fecha de Creación:</dt>
-            <dd class="col-sm-9">@Model.FechaCreacion.ToString("dd/MM/yyyy")</dd>
+            <dt class="col-sm-3">Monto Total (sin IVA)</dt>
+            <dd class="col-sm-9">$ @Model.MontoPresupuesto().ToString("N2")</dd>
+
+            <dt class="col-sm-3">Monto Total (con IVA)</dt>
+            <dd class="col-sm-9 text-success">$ @Model.MontoPresupuestoConIva().ToString("N2")</dd>
+
+            <dt class="col-sm-3">Unidades de Productos</dt>
+            <dd class="col-sm-9">@Model.CantidadProductos() unidades</dd>
         </dl>
 
+        <h4 class="mt-4">Productos Incluidos</h4>
+
+        <p>
+            <a asp-action="AgregarProducto" asp-route-id="@Model.IdPresupuesto" class="btn btn-sm btn-info">
+                Añadir Producto
+            </a>
+        </p>
         @if (Model.Detalle != null && Model.Detalle.Count > 0)
         {
             <h5>Productos en el Presupuesto:</h5>
