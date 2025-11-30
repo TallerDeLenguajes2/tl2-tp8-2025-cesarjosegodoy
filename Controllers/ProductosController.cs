@@ -3,24 +3,39 @@ using Microsoft.AspNetCore.Mvc;
 using SistemaVentas.Web.Repository;
 using SistemaVentas.Web.Models;
 using SistemaVentas.Web.ViewModels;
+using MVC.Interfaces;
+
+
+
+
 
 namespace SistemaVentas.Web.Controllers
 {
     public class ProductosController : Controller
     {
 
-        private readonly ProductoRepository _productoRepository;
+        private IProductoRepository _productoRepository;
 
-        public ProductosController()
+        private IAuthenticationService _authService;
+
+        public ProductosController(IProductoRepository prodRepo, IAuthenticationService authService)
         {
-            _productoRepository = new ProductoRepository();
+            _productoRepository = prodRepo;
+
+            _authService = authService;
         }
+
 
         // - - - - - - - - - - - - - - - - - Listado
 
         [HttpGet]
         public IActionResult Index() // views
-        {                                                  //funcion en repositories
+        {
+            // Aplicamos el chequeo de seguridad
+            var securityCheck = CheckAdminPermissions();
+            if (securityCheck != null) return securityCheck;
+
+            //funcion en repositories
             List<Producto> productos = _productoRepository.GetAll(); // mostrar todo
             return View(productos);
         }
@@ -29,6 +44,12 @@ namespace SistemaVentas.Web.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
+
+            // Aplicamos el chequeo de seguridad
+            var securityCheck = CheckAdminPermissions();
+            if (securityCheck != null) return securityCheck;
+
+
             var producto = _productoRepository.GetById(id); //aqui
 
             if (producto == null)
@@ -51,6 +72,10 @@ namespace SistemaVentas.Web.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            // Aplicamos el chequeo de seguridad
+            var securityCheck = CheckAdminPermissions();
+            if (securityCheck != null) return securityCheck;
+
             return View();
         }
 
@@ -80,6 +105,13 @@ namespace SistemaVentas.Web.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+
+            // Aplicamos el chequeo de seguridad
+            var securityCheck = CheckAdminPermissions();
+            if (securityCheck != null) return securityCheck;
+
+
+
             var prod = _productoRepository.GetById(id);
             if (prod == null)
                 return NotFound();
@@ -124,11 +156,16 @@ namespace SistemaVentas.Web.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
+
+            // Aplicamos el chequeo de seguridad
+            var securityCheck = CheckAdminPermissions();
+            if (securityCheck != null) return securityCheck;
+
             var producto = _productoRepository.GetById(id);
 
             if (producto == null)
                 return NotFound();
-                
+
             var productoVm = new ProductoViewModel // con esto
             {
                 IdProducto = producto.IdProducto,
@@ -146,7 +183,35 @@ namespace SistemaVentas.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
 
+
+        private IActionResult CheckAdminPermissions()
+        {
+            // 1. No logueado? -> Login (Punto 2.e.iii)
+            if (!_authService.IsAuthenticated())
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            // 2. No es Administrador? -> Error (Punto 2.e.i)
+            if (!_authService.HasAccessLevel("Administrador"))
+            {
+                // Usamos Error403 o redirigimos al Login si no existe vista de error.
+                return RedirectToAction(nameof(AccesoDenegado));
+            }
+            return null; // Permiso concedido
+        }
+
+        public IActionResult AccesoDenegado()
+        {
+            // El usuario está logueado, pero no tiene el rol suficiente.
+            return View();
+        }
 
 
     }

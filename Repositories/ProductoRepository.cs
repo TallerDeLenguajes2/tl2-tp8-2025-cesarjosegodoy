@@ -1,12 +1,12 @@
 using Microsoft.Data.Sqlite;
 using SistemaVentas.Web.Models;
-
+using MVC.Interfaces;
 
 namespace SistemaVentas.Web.Repository
 {
 
 
-    public class ProductoRepository
+    public class ProductoRepository : IProductoRepository
     {
         // Cadena de conexión estática o leída de un archivo de configuración (appsettings.json)
         // Para este ejemplo, la definimos directamente:
@@ -16,7 +16,6 @@ namespace SistemaVentas.Web.Repository
         public ProductoRepository()
         {
         }
-
 
 
         // - - - - - Alta
@@ -102,21 +101,7 @@ namespace SistemaVentas.Web.Repository
 
         }
 
-
-        /*public bool Eliminar(int id)
-        {
-            using var connection = new SqliteConnection(_connectionString);
-            connection.Open();
-
-            var query = "DELETE FROM Productos WHERE idProducto=@id";
-            using var cmd = new SqliteCommand(query, connection);
-            cmd.Parameters.AddWithValue("@id", id);
-
-            return cmd.ExecuteNonQuery() > 0;
-        }*/
-
-
-        public void Eliminar(int _id)
+         public void Eliminar(int _id)
         {
             string query = "DELETE FROM Productos WHERE IDProducto = @id";
 
@@ -133,22 +118,7 @@ namespace SistemaVentas.Web.Repository
         }
 
 
-
-        /* public bool Modificar(int id, Producto prod)
-         {
-             using var connection = new SqliteConnection(_connectionString);
-             connection.Open();
-
-             var query = "UPDATE Productos SET Descripcion=@d, Precio=@p WHERE idProducto=@id";
-             using var cmd = new SqliteCommand(query, connection);
-             cmd.Parameters.AddWithValue("@id", id);
-             cmd.Parameters.AddWithValue("@d", prod.Descripcion);
-             cmd.Parameters.AddWithValue("@p", prod.Precio);
-
-             return cmd.ExecuteNonQuery() > 0;
-         }*/
-
-        public void Modificar(Producto nuevo)
+          public void Modificar(Producto nuevo)
         {
             string query = "UPDATE Productos SET Descripcion = @nuevaDes, Precio = @nuevoPrecio WHERE IDProducto = @id";
 
@@ -167,13 +137,6 @@ namespace SistemaVentas.Web.Repository
                 connection.Close();
             }
         }
-
-
-
-
-
-
-
 
 
 

@@ -2,10 +2,11 @@ using System.Collections.Generic;
 using Microsoft.Data.Sqlite;
 using SistemaVentas.Web.Models;
 using System;
+using MVC.Interfaces;
 
 namespace SistemaVentas.Web.Repository
 {
-    public class PresupuestoRepository
+    public class PresupuestoRepository : IPresupuestoRepository
     {
         private readonly string _cadenaConexion = "Data Source=Db/Tienda.db;";
 
@@ -112,7 +113,7 @@ namespace SistemaVentas.Web.Repository
 
 
         // Obtener presupuesto por ID con su detalle
-        public Presupuesto? GetByIdPresupuesto(int id)
+        public Presupuesto GetByIdPresupuesto(int id)
         {
             Presupuesto? p = null;
 
@@ -227,7 +228,7 @@ namespace SistemaVentas.Web.Repository
         // ------------------------------------------------------------------
 
         // Método auxiliar para cargar los detalles de un presupuesto (usado en GetById)
-        private List<PresupuestoDetalle> GetDetallesByPresupuestoId(int idPresupuesto)
+        public List<PresupuestoDetalle> GetDetallesByPresupuestoId(int idPresupuesto)
         {
             var detalles = new List<PresupuestoDetalle>();
             const string sql = "SELECT IdPresupuesto, IdProducto, Cantidad FROM PresupuestoDetalle WHERE IdPresupuesto = @IdPresupuesto";

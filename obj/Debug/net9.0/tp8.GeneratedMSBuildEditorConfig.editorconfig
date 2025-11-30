@@ -28,6 +28,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Presupuestos/AccesoDenegado.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3VwdWVzdG9zXEFjY2Vzb0RlbmVnYWRvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Presupuestos/AgregarProducto.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3VwdWVzdG9zXEFncmVnYXJQcm9kdWN0by5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -52,6 +60,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3VwdWVzdG9zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Productos/AccesoDenegado.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9zXEFjY2Vzb0RlbmVnYWRvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Productos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9zXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -74,6 +86,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Shared/Error403.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yNDAzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [J:/Desktop/08 - Taller 2/2025/07-/tl2-tp8-2025-cesarjosegodoy/Views/Shared/_ValidationScriptsPartial.cshtml]

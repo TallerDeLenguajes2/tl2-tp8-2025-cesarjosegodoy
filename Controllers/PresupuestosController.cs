@@ -4,39 +4,62 @@ using Microsoft.AspNetCore.Mvc.Rendering;// Necesario para SelectList
 using SistemaVentas.Web.Repository;
 using SistemaVentas.Web.ViewModels;
 using SistemaVentas.Web.Models;
+using MVC.Interfaces;
+
 
 
 namespace SistemaVentas.Web.Controllers
 {
 
-
-
     public class PresupuestosController : Controller
     {
 
-        private readonly PresupuestoRepository _presupuestoRepository;// Necesitamos el repositorio de Productos para llenar el dropdown
-        private readonly ProductoRepository _productoRepository;
+        private readonly IPresupuestoRepository _presupuestoRepository;// Necesitamos el repositorio de Productos para llenar el dropdown
+        private readonly IProductoRepository _productoRepository;
 
-        public PresupuestosController(PresupuestoRepository presupuestoRepository, ProductoRepository productoRepository)
+        private IAuthenticationService _authService;
+
+        public PresupuestosController(IPresupuestoRepository presupuestoRepository, IProductoRepository productoRepository, IAuthenticationService authService)
         {
             _presupuestoRepository = presupuestoRepository;
             _productoRepository = productoRepository;
-        }
+            _authService = authService;
 
+        }
+    
         // - - - - - - - - - - - - - - - - - Listado
 
         [HttpGet]
         public IActionResult Index()
         {
-            var presupuestos = _presupuestoRepository.GetAllPresupuesto();
-            return View(presupuestos);
-        }
+            // Comprobación manual de autenticación
+            if (!_authService.IsAuthenticated())
+            {
+                return RedirectToAction("Index", "Login");
+            }
 
+            // Comprobación manual de nivel de acceso
+            if (_authService.HasAccessLevel("Administrador") || _authService.HasAccessLevel("Cliente"))
+            {
+                //si es admin o cliente entra
+
+
+                var presupuestos = _presupuestoRepository.GetAllPresupuesto();
+                return View(presupuestos);
+
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+        }
         // - - - - - - - - - - - - - - - - - Detalle
 
         [HttpGet]
         public IActionResult Details(int id)
         {
+
             var presupuesto = _presupuestoRepository.GetByIdPresupuesto(id);
             if (presupuesto == null)
             {
@@ -48,7 +71,7 @@ namespace SistemaVentas.Web.Controllers
                 IdPresupuesto = presupuesto.IdPresupuesto,
                 NombreDestinatario = presupuesto.NombreDestinatario,
                 FechaCreacion = presupuesto.FechaCreacion,
-                Detalle = presupuesto.Detalle, 
+                Detalle = presupuesto.Detalle,
             };
 
 
@@ -61,29 +84,43 @@ namespace SistemaVentas.Web.Controllers
         public IActionResult Create()
         {
 
-            return View();
+            if (!_authService.IsAuthenticated())
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            // Comprobación manual de nivel de acceso
+            if (!_authService.HasAccessLevel("Administrador"))
+            {
+                return RedirectToAction(nameof(AccesoDenegado));
+            }
+            // Se retorna un VM vacío para el formulario
+            return View(new PresupuestoViewModel());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]//esto nuevo
         public IActionResult Create(PresupuestoViewModel _presupuestoVm) //cambio ahora es PresupuestoViewModel
         {
+
+            // ❗ 1. VALIDACIÓN DE REGLA DE NEGOCIO ESPECÍFICA (Fecha no Futura)
             if (_presupuestoVm.FechaCreacion > DateTime.Now)
             {
                 ModelState.AddModelError("FechaCreacion", "La fecha no puede ser posterior a la actual.");
             }
-
+            // ❗ 2. CHEQUEO DE SEGURIDAD (incluye el error de Fecha si se añadió)
             if (!ModelState.IsValid)
             {
+                // ❌ Si falla: Retorna a la misma vista con el VM para mostrar los errores
                 return View(_presupuestoVm);
             }
-
+            // 🟢 3. SI ES VÁLIDO: Mapeo Manual (VM -> Modelo de Dominio)
             Presupuesto p = new Presupuesto
             {
                 NombreDestinatario = _presupuestoVm.NombreDestinatario,
                 FechaCreacion = _presupuestoVm.FechaCreacion
             };
-
+            // 4. Llamada al Repositorio
             _presupuestoRepository.Crear(p);
 
             return RedirectToAction(nameof(Index));
@@ -95,6 +132,18 @@ namespace SistemaVentas.Web.Controllers
         public IActionResult Edit(int id)
         {
             //var presupuesto = _presupuestoRepository.ObtenerPorId(id); Antes
+
+            if (!_authService.IsAuthenticated())
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            // Comprobación manual de nivel de acceso
+            if (!_authService.HasAccessLevel("Administrador"))
+            {
+                return RedirectToAction(nameof(AccesoDenegado));
+            }
+
 
             Presupuesto? presupuesto = _presupuestoRepository.GetByIdPresupuesto(id); // lo nuevo
 
@@ -213,10 +262,17 @@ namespace SistemaVentas.Web.Controllers
             // 3. Redirigimos al detalle del presupuesto
             return RedirectToAction(nameof(Details), new { id = model.IdPresupuesto });
         }
+        public IActionResult AccesoDenegado()
+        {
+            // El usuario está logueado, pero no tiene el rol suficiente.
+            return View();
+        }
 
-
-
-
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
 
     }
 }
