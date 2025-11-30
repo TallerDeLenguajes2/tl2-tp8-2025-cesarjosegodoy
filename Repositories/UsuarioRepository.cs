@@ -9,7 +9,7 @@ namespace SistemaVentas.Web.Repository
     {
         // Cadena de conexión SQLite
         // Asegúrate de que esta ruta sea correcta para tu proyecto
-        private readonly string CadenaConexion = "Data Source=./Db/Tienda.db";
+        private readonly string CadenaConexion = "Data Source=Db/Tienda.db";
 
         // Constructor vacío (la Inyección de Dependencias se aplicará en el Controller)
         public Usuario GetUser(string usuario, string contrasena)
